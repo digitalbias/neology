@@ -22,6 +22,8 @@ module Neology
         #p "updating index #{_index_name} for #{node["self"]}: #{property_name} = #{old_value} --> #{new_value}"
         if !(old_value.nil? or old_value == "")
           $neo_server.remove_node_from_index(_index_name, property_name, old_value, node)
+        else
+          $neo_server.remove_node_from_index(_index_name, property_name, node)
         end
         $neo_server.add_node_to_index(_index_name, property_name, new_value, node)
       end
